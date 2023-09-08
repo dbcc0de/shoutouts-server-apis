@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Card from "./Card";
 import "./List.css";
 import Shoutout from "../models/Shoutout";
