@@ -1,0 +1,5 @@
+.Form input,
+.Form textarea {
+  margin: 10px;
+  display: flex;
+}
