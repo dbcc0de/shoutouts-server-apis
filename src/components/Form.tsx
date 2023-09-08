@@ -1,13 +1,14 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Shoutout from "../models/Shoutout";
 import "./Form.css";
 
 interface Props {
   addShoutoutHandler: (shoutout: Shoutout) => void;
+  name?: string;
 }
 
-const Form = ({ addShoutoutHandler }: Props) => {
-  const [to, setTo] = useState("");
+const Form = ({ addShoutoutHandler, name }: Props) => {
+  const [to, setTo] = useState(name ? name : "");
   const [from, setFrom] = useState("");
   const [text, setText] = useState("");
 
@@ -23,8 +24,12 @@ const Form = ({ addShoutoutHandler }: Props) => {
     setText("");
   };
 
+  useEffect(() => {
+    setTo(name || "");
+  }, [name]);
+
   return (
-    <form className="Form" onSubmit={handleSubmit}>
+    <form className="Form" onSubmit={(e) => handleSubmit(e)}>
       <h2>Leave a Shout Out</h2>
       <label>
         To:

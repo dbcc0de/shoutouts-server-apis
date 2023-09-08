@@ -1,11 +1,23 @@
 import "./App.css";
-import List from "./components/List";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
+import ShoutoutsByNameRoute from "./components/ShoutoutsByNameRoute";
+import HomeRoute from "./components/HomeRoute";
 
 function App() {
   return (
     <div className="App">
-      <h1>All Shout Outs</h1>
-      <List />
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomeRoute />} />
+          <Route path="/user/:name" element={<ShoutoutsByNameRoute />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
